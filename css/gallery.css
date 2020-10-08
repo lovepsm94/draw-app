@@ -1,0 +1,48 @@
+.gallery-container {
+    background-color: #666;
+    height: 100vh;
+}
+.gallery-header {
+    position: relative;
+}
+.back-icon {
+    width: 50px;
+    height: 50px;
+    background-color:#666;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+h1 {
+    margin: 0;
+    padding:20px;
+    font-size: 30px;
+    font-family: 'Sansita Swashed', cursive;
+    color: #ccffff;
+    text-align: center;
+}
+.user-images {
+    background-color: #666;
+    display:grid;
+    justify-content: space-between;
+    grid-template-columns: auto auto auto ;
+}
+.image-container { 
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.img {
+    display: block;
+    width: 400px;
+    height: 240px;
+}
+
+.img-name {
+    margin-top: 10px;
+    font-family: 'Sansita Swashed', cursive;
+    color: purple;
+}
