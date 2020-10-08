@@ -69,8 +69,6 @@ view.createTempCanvas = () => {
     const ctx = canvas.getContext('2d')
     ctx.strokeStyle = "#000000"
     ctx.lineWidth = 1.0
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctxo.clearRect(0, 0, canvas.width, canvas.height)
     ctx.fillStyle = "#ffffff"
     ctx.fillRect(0, 0, 1000, 600)
     currentCanvas = new CanvasVariable(canvaso, ctxo, canvas, ctx, 'pen')

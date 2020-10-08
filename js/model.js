@@ -34,12 +34,18 @@ model.login = async ({ email, password }) => {
 model.saveImg = () => {
     const dataURL = currentCanvas.canvaso.toDataURL("image/png", 1)
     const fileName = model.currentUser.imgName
-    const filePath = `images/${fileName}`
-    const fileRef = firebase.storage().ref().child(filePath)
-    fileRef.putString(dataURL, 'data_url').then(res => {
-        const imgUrl = getFileUrl(fileRef)
-        model.addImgUrlToFirestore(imgUrl)
-    })
+    if (fileName) {
+        const filePath = `images/${fileName}`
+        const fileRef = firebase.storage().ref().child(filePath)
+        fileRef.putString(dataURL, 'data_url').then(res => {
+            const imgUrl = getFileUrl(fileRef)
+            model.addImgUrlToFirestore(imgUrl)
+        })
+        view.setActiveScreen('drawPage')
+    } else {
+        alert('Please input the image name')
+    }
+
 }
 model.createUserGallery = (userName) => {
     const dataToCreate = {
