@@ -32,7 +32,7 @@ model.login = async ({ email, password }) => {
     }
 }
 model.saveImg = () => {
-    const dataURL = currentCanvas.canvaso.toDataURL("image/png", 1)
+    const dataURL = currentCanvas.canvaso.toDataURL("image/jpeg", 1)
     const fileName = model.currentUser.imgName
     if (fileName) {
         const filePath = `images/${fileName}`
