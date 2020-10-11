@@ -58,7 +58,7 @@ component.loginPage = `
 </div>
 `
 component.drawPage = `
-<div class="container">
+<div class="draw-container">
         <div class="header-bar">
             <h1 class="welcome-user"></h1>
         </div>

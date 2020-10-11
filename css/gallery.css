@@ -25,9 +25,8 @@ h1 {
 .user-images {
     background-color: #666;
     display:grid;
-    padding: 10px;
     justify-content: space-between;
-    grid-template-columns: auto auto auto ;
+    grid-template-columns: 33vw 33vw 33vw ;
 }
 .image-container { 
     display: flex;
@@ -48,10 +47,11 @@ h1 {
     color: purple;
 }
 .hide {
-    width: 30px;
-    height: 30px;
-    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
     display: none;
+    border-radius: 5px;
 }
 .delete {
     background-color: red;
@@ -61,16 +61,14 @@ h1 {
 .image-wrapper {
     width: 500px;
     display: flex;
+    margin: 50px;
 }
 .img-controller {
     margin-left: 10px;
     display: flex;
     flex-direction: column;
 }
-.hide-div {
-    width: 30px;
-    display: hidden;
-}
+
 .image-wrapper:hover .hide {
     display: block;
 }
