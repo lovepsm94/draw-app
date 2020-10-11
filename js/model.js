@@ -1,6 +1,7 @@
 const model = {}
 model.currentUser = undefined
 model.userInfo = undefined
+model.imgDelete = undefined
 model.register = async (data) => {
     try {
         const response = await firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
@@ -71,4 +72,13 @@ model.addImgUrlToFirestore = async (imgUrl) => {
     }
     await model.getUserInfo()
     firebase.firestore().collection('gallery').doc(model.userInfo.id).update(dataToUpdate)
+}
+model.deleteImg = async() => {
+    for (const item of model.userInfo.images) {
+        if (item.url === model.imgDelete) {
+            const index = model.userInfo.images.indexOf(item)
+            model.userInfo.images.splice (index, 1)
+        }
+    }
+    await firebase.firestore().collection('gallery').doc(model.userInfo.id).update(model.userInfo)
 }

@@ -24,6 +24,15 @@
     display: flex;
     flex-direction: column;
 }
+.draw-tool {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-size: cover; 
+    background-color: #fff;   
+}
 .tool {
     width: 50px;
     height: 50px;
@@ -62,6 +71,14 @@
     background-color: #fff;
 }
 
+.stroke-weight-tool {
+    margin-top: 5px;
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    background-size: cover;
+    cursor: pointer;
+}
 .container .header-bar {
     height: 64px;
     text-align: center;
@@ -75,11 +92,7 @@ h1 {
     font-family: 'Sansita Swashed', cursive;
     color: #ccffff
 }
-.stroke {
-    margin: 5px 0;
-    width: 60px;
-    height: 30px;
-}
+
 .draw-btn {
     position: absolute;
     top: 100px;
@@ -97,5 +110,10 @@ h1 {
     bottom: 100px;
 }
 .sign-out {
-    margin: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-size: cover; 
+    background-color: #fff;   
 }

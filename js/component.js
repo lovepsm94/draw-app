@@ -65,25 +65,24 @@ component.drawPage = `
         <div class="canvas-wrapper">
             <canvas id="drawing-canvas" width="1000" height="600"></canvas>
             <div class="draw-btn">
-               <img src="./img/download.png" alt="" title="down load" class="tool img-tool draw_btn" onclick="view.updateImg();controller.downloadImg()">
-               <img src="./img/save.png" alt="" id="save-btn" title="save" class="tool img-tool draw_btn" onclick="view.saveImg()">
-               <img src="./img/gallery.png" alt="" title="gallery" class="tool img-tool draw_btn" onclick="view.setActiveScreen('galleryPage');">
+                <div class="draw-tool" style="background-image: url('./img/download.png');" onclick="view.updateImg();controller.downloadImg()"></div>
+                <div class="draw-tool" style="background-image: url('./img/save.png');" onclick="view.saveImg()"></div>
+                <div class="draw-tool" style="background-image: url('./img/gallery.png');" onclick="view.setActiveScreen('galleryPage')"></div>
             </div>
             <div class="draw-tools">
-               <img src="./img/pen.jpg" alt="" class="tool img-tool" onclick="tool = new tools['pen']() ">
-               <img src="./img/line.png" alt="" class="tool img-tool" onclick="tool = new tools['line']()">
-               <img src="./img/rec.png" alt="" class="tool img-tool" onclick="tool = new tools['rect']()">
-               <img src="./img/eraser.png" alt="" class="tool img-tool" onclick="tool = new tools['eraser']()">
-               <img src="./img/remove.jpg" alt="" class="tool img-tool" onclick="tool = new tools['remove']()">
+               <div class="draw-tool" style="background-image: url('./img/pen.jpg');" onclick="tool = new tools['pen']();"></div>
+               <div class="draw-tool" style="background-image: url('./img/line.png');" onclick="tool = new tools['line']();"></div>
+               <div class="draw-tool" style="background-image: url('./img/rec.png');" onclick="tool = new tools['rect']();"></div>
+               <div class="draw-tool" style="background-image: url('./img/eraser.png');" onclick="tool = new tools['eraser']();"></div>
+               <div class="draw-tool" style="background-image: url('./img/remove.jpg');" onclick="tool = new tools['remove']();"></div>
             </div>
             <div class="stroke-weight">
-                <img src="./img/stroke1.png" alt="" class="tool img-tool stroke" onclick="currentCanvas.ctx.lineWidth = currentCanvas.lineWidth = '1';">
-                <img src="./img/stroke2.png" alt="" class="tool img-tool stroke" onclick="currentCanvas.ctx.lineWidth = currentCanvas.lineWidth = '6';">
-                <img src="./img/stroke3.png" alt="" class="tool img-tool stroke" onclick="currentCanvas.ctx.lineWidth = currentCanvas.lineWidth = '9';">
-                <img src="./img/stroke4.png" alt="" class="tool img-tool stroke" onclick="currentCanvas.ctx.lineWidth = currentCanvas.lineWidth = '13';">
+                <div class="stroke-weight-tool" title="1px" style="background-image: url('./img/stroke1.png');" onclick="currentCanvas.ctx.lineWidth = currentCanvas.lineWidth = '1';"></div>
+                <div class="stroke-weight-tool" title="3px" style="background-image: url('./img/stroke2.png');" onclick="currentCanvas.ctx.lineWidth = currentCanvas.lineWidth = '3';"></div>
+                <div class="stroke-weight-tool" title="5px" style="background-image: url('./img/stroke3.png');" onclick="currentCanvas.ctx.lineWidth = currentCanvas.lineWidth = '5';"></div>
+                <div class="stroke-weight-tool" title="10px" style="background-image: url('./img/stroke4.png');" onclick="currentCanvas.ctx.lineWidth = currentCanvas.lineWidth = '10';"></div>
             </div>
-            <div class="color-picker">
-                <div class="tool" id="black" style="background-color: black;" onclick="currentCanvas.ctx.strokeStyle = currentCanvas.strokeStyle = 'black';"></div>
+            <div class="color-picker">   
                 <div class="tool" id="gray" style="background-color: gray;" onclick="currentCanvas.ctx.strokeStyle = currentCanvas.strokeStyle = 'gray';"></div>
                 <div class="tool" id="purple" style="background-color: purple;" onclick="currentCanvas.ctx.strokeStyle = currentCanvas.strokeStyle = 'purple';"></div>
                 <div class="tool" id="red" style="background-color: red;" onclick="currentCanvas.ctx.strokeStyle = currentCanvas.strokeStyle = 'red';"></div>
@@ -93,7 +92,7 @@ component.drawPage = `
                 <div class="tool" id="pink" style="background-color: pink;" onclick="currentCanvas.ctx.strokeStyle = currentCanvas.strokeStyle = 'pink';"></div>
             </div>
             <div class="sign-out-btn">
-                <img src="./img/signout.png" alt="" title="sign out" class="tool img-tool sign-out" onclick="view.signOut()">
+                <div class="sign-out" title="sign out" style="background-image: url('./img/signout.png');" onclick="view.signOut()"></div>
             </div>
         </div>
     </div>

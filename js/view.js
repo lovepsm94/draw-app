@@ -109,13 +109,26 @@ view.saveImg = () => {
 view.showGallery = async () => {
     await model.getUserInfo()
     const userImgs = document.querySelector('.user-images')
+    userImgs.innerHTML = ''
     for (const item of model.userInfo.images) {
         userImgs.insertAdjacentHTML("beforeend", `
-        <div class="image-container">
-            <a href="${item.url}" data-lightbox="roadtrip" class="img" style="background: url('${item.url}'); background-size: cover"></a>
-            <h6 class="img-name">${item.name}</h6>
+        <div class="image-wrapper">
+            <div class="hide-div"></div>
+            <div class="image-container">
+                <a href="${item.url}" data-lightbox="roadtrip" class="img" style="background: url('${item.url}'); background-size: cover">
+                </a>
+                <h6 class="img-name">${item.name}</h6>
+            </div>
+            <div class="img-controller">
+                <div class="draw-tool hide" style="background-image: url('./img/remove.jpg')" id="${item.url}" onclick="model.imgDelete = this.id; view.deleteImg()"></div>
+            </div>
         </div>
-        `)
-        
+        `)  
+    }
+}
+view.deleteImg = async() => {
+    if (confirm('Delete image?')) {
+        await model.deleteImg()
+        view.showGallery()
     }
 }

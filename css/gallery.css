@@ -25,24 +25,52 @@ h1 {
 .user-images {
     background-color: #666;
     display:grid;
+    padding: 10px;
     justify-content: space-between;
     grid-template-columns: auto auto auto ;
 }
 .image-container { 
-    margin: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .img {
     display: block;
-    width: 400px;
-    height: 240px;
+    width: 25vw;
+    height: 15vw;
 }
 
 .img-name {
     margin-top: 10px;
     font-family: 'Sansita Swashed', cursive;
     color: purple;
+}
+.hide {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    display: none;
+}
+.delete {
+    background-color: red;
+}
+
+
+.image-wrapper {
+    width: 500px;
+    display: flex;
+}
+.img-controller {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.hide-div {
+    width: 30px;
+    display: hidden;
+}
+.image-wrapper:hover .hide {
+    display: block;
 }
