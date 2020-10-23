@@ -55,8 +55,8 @@ controller.login = (data) => {
 };
 controller.downloadImg = () => {
   const img = currentCanvas.canvaso.toDataURL("image/png", 1).replace("image/png", "image/octet-stream")
-  const link = document.createElement('a');
-  link.download = "my-image.png";
-  link.href = img;
-  link.click();
+  const link = document.createElement('a')
+  link.download = "my-image.png"
+  link.href = img
+  link.click()
 };
