@@ -54,114 +54,118 @@ function CanvasVariable(canvaso, ctxo, canvas, ctx, tool) {
 }
 tools = {}
 tools.pen = function () {
-    currentCanvas.ctx.strokeStyle = currentCanvas.strokeStyle
-    currentCanvas.ctx.lineWidth = currentCanvas.lineWidth
-    let tool = this
-    this.started = false
-    currentCanvas.canvas.onmousedown = function (ev) {
-        currentCanvas.ctx.beginPath()
-        currentCanvas.ctx.moveTo(ev._x, ev._y)
-        tool.started = true
+  document.querySelector('.stroke-weight').style.display = 'flex'
+  currentCanvas.ctx.strokeStyle = currentCanvas.strokeStyle
+  currentCanvas.ctx.lineWidth = currentCanvas.lineWidth
+  let tool = this
+  this.started = false
+  currentCanvas.canvas.onmousedown = function (ev) {
+    currentCanvas.ctx.beginPath()
+    currentCanvas.ctx.moveTo(ev._x, ev._y)
+    tool.started = true
+  }
+  currentCanvas.canvas.onmousemove = function (ev) {
+    if (tool.started) {
+      currentCanvas.ctx.lineTo(ev._x, ev._y)
+      currentCanvas.ctx.stroke()
     }
-    currentCanvas.canvas.onmousemove = function (ev) {
-        if (tool.started) {
-            currentCanvas.ctx.lineTo(ev._x, ev._y)
-            currentCanvas.ctx.stroke()
-        }
+  }
+  window.onmouseup = function (ev) {
+    if (tool.started) {
+      tool.started = false
+      view.updateImg()
     }
-    window.onmouseup = function (ev) {
-        if (tool.started) {
-            tool.started = false
-            view.updateImg()
-        }
-    }
+  }
 }
 tools.eraser = function () {
-    const context = currentCanvas.ctx
-    context.strokeStyle = '#ffffff'
-    context.lineWidth = '22'
-    let tool = this
-    this.started = false
-    currentCanvas.canvas.onmousedown = function (ev) {
-        context.beginPath()
-        context.moveTo(ev._x, ev._y)
-        tool.started = true
+  document.querySelector('.stroke-weight').style.display = 'none'
+  const context = currentCanvas.ctx
+  context.strokeStyle = '#ffffff'
+  context.lineWidth = '22'
+  let tool = this
+  this.started = false
+  currentCanvas.canvas.onmousedown = function (ev) {
+    context.beginPath()
+    context.moveTo(ev._x, ev._y)
+    tool.started = true
+  }
+  currentCanvas.canvas.onmousemove = function (ev) {
+    if (tool.started) {
+      context.lineTo(ev._x, ev._y)
+      context.stroke()
     }
-    currentCanvas.canvas.onmousemove = function (ev) {
-        if (tool.started) {
-            context.lineTo(ev._x, ev._y)
-            context.stroke()
-        }
+  }
+  window.onmouseup = function (ev) {
+    if (tool.started) {
+      tool.started = false
     }
-    window.onmouseup = function (ev) {
-        if (tool.started) {
-            tool.started = false
-        }
-        view.updateImg()
-    }
+    view.updateImg()
+  }
 }
 tools.rect = function () {
-    const context = currentCanvas.ctx
-    context.strokeStyle = currentCanvas.strokeStyle
-    context.lineWidth = currentCanvas.lineWidth
-    let tool = this
-    started = false
-    currentCanvas.canvas.onmousedown = function (ev) {
-        tool.started = true
-        tool.x0 = ev._x
-        tool.y0 = ev._y
+  document.querySelector('.stroke-weight').style.display = 'flex'
+  const context = currentCanvas.ctx
+  context.strokeStyle = currentCanvas.strokeStyle
+  context.lineWidth = currentCanvas.lineWidth
+  let tool = this
+  started = false
+  currentCanvas.canvas.onmousedown = function (ev) {
+    tool.started = true
+    tool.x0 = ev._x
+    tool.y0 = ev._y
+  }
+  currentCanvas.canvas.onmousemove = function (ev) {
+    if (!tool.started) {
+      return
     }
-    currentCanvas.canvas.onmousemove = function (ev) {
-        if (!tool.started) {
-            return
-        }
-        let x = Math.min(ev._x, tool.x0),
-            y = Math.min(ev._y, tool.y0),
-            w = Math.abs(ev._x - tool.x0),
-            h = Math.abs(ev._y - tool.y0)
-        context.clearRect(0, 0, currentCanvas.canvas.width, currentCanvas.canvas.height)
-        if (!w || !h) {
-            return
-        }
-        context.strokeRect(x, y, w, h)
+    let x = Math.min(ev._x, tool.x0),
+      y = Math.min(ev._y, tool.y0),
+      w = Math.abs(ev._x - tool.x0),
+      h = Math.abs(ev._y - tool.y0)
+    context.clearRect(0, 0, currentCanvas.canvas.width, currentCanvas.canvas.height)
+    if (!w || !h) {
+      return
     }
-    currentCanvas.canvas.onmouseup = function (ev) {
-        if (tool.started) {
-            tool.started = false
-            view.updateImg()
-        }
+    context.strokeRect(x, y, w, h)
+  }
+  currentCanvas.canvas.onmouseup = function (ev) {
+    if (tool.started) {
+      tool.started = false
+      view.updateImg()
     }
+  }
 }
 tools.line = function () {
-    currentCanvas.ctx.strokeStyle = currentCanvas.strokeStyle
-    currentCanvas.ctx.lineWidth = currentCanvas.lineWidth
-    const context = currentCanvas.ctx
-    let tool = this
-    this.started = false
-    currentCanvas.canvas.onmousedown = function (ev) {
-        tool.started = true
-        tool.x0 = ev._x
-        tool.y0 = ev._y
+  document.querySelector('.stroke-weight').style.display = 'flex'
+  currentCanvas.ctx.strokeStyle = currentCanvas.strokeStyle
+  currentCanvas.ctx.lineWidth = currentCanvas.lineWidth
+  const context = currentCanvas.ctx
+  let tool = this
+  this.started = false
+  currentCanvas.canvas.onmousedown = function (ev) {
+    tool.started = true
+    tool.x0 = ev._x
+    tool.y0 = ev._y
+  }
+  currentCanvas.canvas.onmousemove = function (ev) {
+    if (!tool.started) {
+      return
     }
-    currentCanvas.canvas.onmousemove = function (ev) {
-        if (!tool.started) {
-            return
-        }
-        context.clearRect(0, 0, currentCanvas.canvas.width, currentCanvas.canvas.height)
-        // Begin the line. 
-        context.beginPath()
-        context.moveTo(tool.x0, tool.y0)
-        context.lineTo(ev._x, ev._y)
-        context.stroke()
-        context.closePath()
-    }
-    currentCanvas.canvas.onmouseup = function (ev) {
-        tool.started = false
-        view.updateImg()
-    }
+    context.clearRect(0, 0, currentCanvas.canvas.width, currentCanvas.canvas.height)
+    // Begin the line. 
+    context.beginPath()
+    context.moveTo(tool.x0, tool.y0)
+    context.lineTo(ev._x, ev._y)
+    context.stroke()
+    context.closePath()
+  }
+  currentCanvas.canvas.onmouseup = function (ev) {
+    tool.started = false
+    view.updateImg()
+  }
 }
 tools.remove = function () {
-    currentCanvas.ctxo.clearRect(0, 0, currentCanvas.canvas.width, currentCanvas.canvas.height)
+  currentCanvas.ctxo.clearRect(0, 0, currentCanvas.canvas.width, currentCanvas.canvas.height)
 }
 function getFileUrl(fileRef) {
   return `https://firebasestorage.googleapis.com/v0/b/${fileRef.bucket}/o/${encodeURIComponent(fileRef.fullPath)}?alt=media`

@@ -102,7 +102,7 @@ view.signOut = () => {
     })
 }
 view.saveImg = () => {
-    const imgName = prompt('Type image name')
+    const imgName = prompt('Input image name')
     model.currentUser.imgName = imgName
     model.saveImg()
 }
