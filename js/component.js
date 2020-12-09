@@ -63,7 +63,7 @@ component.drawPage = `
             <h1 class="welcome-user"></h1>
         </div>
         <div class="canvas-wrapper">
-            <canvas id="drawing-canvas" width="1000" height="600"></canvas>
+            <canvas id="drawing-canvas" width="800" height="400"></canvas>
             <div class="draw-btn">
                 <div class="draw-tool" style="background-image: url('./img/download.png');" onclick="view.updateImg();controller.downloadImg()"></div>
                 <div class="draw-tool" style="background-image: url('./img/save.png');" onclick="view.saveImg()"></div>
